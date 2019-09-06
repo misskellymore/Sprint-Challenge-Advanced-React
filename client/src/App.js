@@ -7,8 +7,8 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      user: {},
-      followers: []
+      user: [],
+      
     };
   }
 
@@ -31,7 +31,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="App">
-      
+      <UserCard user={this.state.user} />
       </div>
     )
   }
@@ -39,6 +39,31 @@ class App extends React.Component {
   
 }
 
+
+function UserCard(props) {
+
+  return(
+    <div>
+        
+
+        <div className="users">
+
+{props.user.map(users => (
+<div key={users.id}>           
+  <h3>{users.name}</h3>
+  <p> Country: {props.user.country || "Unknown"} </p>
+  <p> Searches: {props.user.searches || "Unknown"} </p>                          
+</div>
+))}
+
+              
+</div>
+        
+
+
+    </div>
+  );    
+}
 
 
 
