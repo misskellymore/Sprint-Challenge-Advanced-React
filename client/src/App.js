@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
-import DarkMode from './hooks/CustomHook.js';
+import Button from './Button.js';
+import useDarkMode from '../src/hooks/useDarkMode.js';
+
+
 
 
 
@@ -9,6 +12,9 @@ class App extends React.Component {
     super();
     this.state = {
       user: [],
+      Button,
+      useDarkMode
+      
       
     };
   }
@@ -25,24 +31,21 @@ class App extends React.Component {
 
   componentDidUpdate() {
     console.log("runs on every rerender -DidUpdate", this.state);
-  }
+  } 
+  
+
 
 
   render() {
-    const { theme, toggleTheme } = useDarkMode()
-    return(
-      <div className="App">
-         <div
-      style={{
-        background: theme === 'dark' ? '#000' : '#fff',
-        color: theme === 'dark' ? '#fff' : '#000',
-      }}
-    >
-      <button type="button" onClick={toggleTheme}>
-        Switch theme
-      </button>
-    </div>
 
+    
+        
+    return(
+
+      <div className="App" 
+      data-testid="testing">         
+      
+      <Button button = {this.state.Button} />     
       <UserCard user={this.state.user} />
       </div>
     )
@@ -52,12 +55,12 @@ class App extends React.Component {
 }
 
 
-function UserCard(props) {
+export const UserCard = (props) => {
 
   return(
     <div>
         
-
+        
         <div className="users">
 
 {props.user.map(users => (
@@ -70,6 +73,7 @@ function UserCard(props) {
 
               
 </div>
+
         
 
 
