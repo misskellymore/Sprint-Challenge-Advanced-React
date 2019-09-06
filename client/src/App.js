@@ -51,8 +51,8 @@ function UserCard(props) {
 {props.user.map(users => (
 <div key={users.id}>           
   <h3>{users.name}</h3>
-  <p> Country: {props.user.country || "Unknown"} </p>
-  <p> Searches: {props.user.searches || "Unknown"} </p>                          
+  <p> Country: {users.country || "Unknown"} </p>
+  <p> Searches: {users.searches || "Unknown"} </p>                          
 </div>
 ))}
 
