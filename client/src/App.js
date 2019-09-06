@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import DarkMode from './hooks/CustomHook.js';
 
 
 
@@ -19,7 +20,6 @@ class App extends React.Component {
     fetch('http://localhost:5000/api/players')
       .then(res => res.json())
       .then(data => this.setState({user: data}));
-
       
   }
 
@@ -29,8 +29,20 @@ class App extends React.Component {
 
 
   render() {
+    const { theme, toggleTheme } = useDarkMode()
     return(
       <div className="App">
+         <div
+      style={{
+        background: theme === 'dark' ? '#000' : '#fff',
+        color: theme === 'dark' ? '#fff' : '#000',
+      }}
+    >
+      <button type="button" onClick={toggleTheme}>
+        Switch theme
+      </button>
+    </div>
+
       <UserCard user={this.state.user} />
       </div>
     )
